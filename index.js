@@ -1,18 +1,18 @@
-require("dotenv").config();
 const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
+const csrf = require("csurf");
+const cookieParser = require("cookie-parser");
 
 const app = express();
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+
+// Enable Cookie Parser for CSRF token storage
+app.use(cookieParser());
+
+// Enable CSRF protection
+const csrfProtection = csrf({ cookie: true });
+app.use(csrfProtection);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to DevSecOps Sample App!" });
+    res.send(`CSRF Token: ${req.csrfToken()}`);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(3000, () => console.log("Server running on port 3000"));
