@@ -36,10 +36,10 @@ jobs:
             --out reports/
 
       - name: Upload Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: dependency-report
-          path: reports/
+          name: dependency-scan-results
+          path: ./scan-results/
 
   dast:
     name: Dynamic App Security Testing (DAST)

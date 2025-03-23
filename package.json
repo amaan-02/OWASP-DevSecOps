@@ -20,6 +20,7 @@
   "homepage": "https://github.com/amaan-02/OWASP-DevSecOps#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "csurf": "^1.10.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.1.0"
